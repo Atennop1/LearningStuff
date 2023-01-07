@@ -20,7 +20,7 @@ namespace LearningStuff.PostgreSQL
                 Debug.Log($"People {i + 1}:\nAge: {data.Rows[i]["age"]}\nFirst Name: {data.Rows[i]["first_name"]}\nLast Name: {data.Rows[i]["last_name"]}");
 
             var commandExecutor = new SQLCommandsExecutor(sqlConnector); //for all other actions use CommandExecutor class
-            commandExecutor.ExecuteCommand("DELETE FROM humans WHERE age = 19;", SQLCommandExecutionType.NonQuery); //delete added human from DB
+            commandExecutor.ExecuteNonQuery("DELETE FROM humans WHERE age = 19;"); //delete added human from DB
         }
     }
 }

@@ -8,19 +8,20 @@ namespace LearningStuff.PostgreSQL
     public class SQLDataReader
     {
         private readonly SQLConnector _connector;
+        private readonly SQLCommandsExecutor _sqlCommandsExecutor;
 
         public SQLDataReader(SQLConnector connector)
         {
             _connector = connector ?? throw new ArgumentException("Connector can't be null");
+            _sqlCommandsExecutor = new SQLCommandsExecutor(_connector);
         }
 
         public DataTable GetData(string sqlRequest)
         {
             var sqlCommand = new NpgsqlCommand();
             sqlCommand.Connection = _connector.GetConnection();
-            sqlCommand.CommandText = sqlRequest;
 
-            var dataReader = sqlCommand.ExecuteReader();
+            var dataReader = _sqlCommandsExecutor.ExecuteReader(sqlRequest);
             var dataTable = new DataTable();
             
             dataTable.Load(dataReader);

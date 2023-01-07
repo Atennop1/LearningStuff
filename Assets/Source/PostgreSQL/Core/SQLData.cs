@@ -10,7 +10,7 @@ namespace LearningStuff.PostgreSQL.Core
         public SQLData(string name, object value)
         {
             Name = name ?? throw new ArgumentException("Name can't be null");
-            Value = value ?? throw new ArgumentException("Value can't be null");
+            Value = value is int or float ? value : $"'{value}'";
         }
     }
 }

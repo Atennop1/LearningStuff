@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Text;
 using LearningStuff.PostgreSQL.Core;
@@ -10,44 +9,37 @@ namespace LearningStuff.PostgreSQL
     public class SQLDataWriter
     {
         private readonly SQLConnector _connector;
+        private readonly SQLCommandsExecutor _sqlCommandsExecutor;
 
         public SQLDataWriter(SQLConnector connector)
         {
             _connector = connector ?? throw new ArgumentException("Connector can't be null");
+            _sqlCommandsExecutor = new SQLCommandsExecutor(_connector);
         }
 
         public void WriteData(string databaseName, SQLData[] sqlData)
         {
             var sqlCommand = new NpgsqlCommand();
-            sqlCommand.Connection = _connector.GetConnection();
-            sqlCommand.CommandType = CommandType.Text;
-
             var finalCommandStringBuilder = new StringBuilder();
-            var sqlDataNames = sqlData.Select(data => data.Name).ToArray();
-            
+            sqlCommand.Connection = _connector.GetConnection();
+
             finalCommandStringBuilder.Append($"INSERT INTO {databaseName} (");
-            finalCommandStringBuilder.Append(BuildParameters(sqlDataNames, ""));
+            finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Name).ToArray()));
             
             finalCommandStringBuilder.Append(" VALUES (");
-            finalCommandStringBuilder.Append(BuildParameters(sqlDataNames, "@"));
-
-            sqlCommand.CommandText = finalCommandStringBuilder.ToString();
-
-            foreach (var data in sqlData)
-                sqlCommand.Parameters.AddWithValue(data.Name, data.Value);
-
-            Console.WriteLine(sqlCommand.CommandText);
-            sqlCommand.ExecuteNonQuery();
+            finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Value.ToString()).ToArray()));
+            
+            _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
 
-        private string BuildParameters(string[] sqlDataNames, string prefix)
+        private string BuildParameters(string?[] names)
         {
             var stringBuilder = new StringBuilder();
             
-            foreach (var name in sqlDataNames)
+            foreach (var name in names)
             {
-                stringBuilder.Append($"{prefix}{name}");
-                stringBuilder.Append(name != sqlDataNames[^1] ? ", " : ")");
+                stringBuilder.Append(name);
+                stringBuilder.Append(name != names[^1] ? ", " : ")");
             }
 
             return stringBuilder.ToString();

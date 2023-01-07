@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data;
+using System.Threading.Tasks;
 using Npgsql;
 
 namespace LearningStuff.PostgreSQL.Core
@@ -13,37 +13,40 @@ namespace LearningStuff.PostgreSQL.Core
             _connector = connector ?? throw new ArgumentException("Connector can't be null");
         }
 
-        public void ExecuteCommand(string command, SQLCommandExecutionType executionType)
+        public NpgsqlDataReader ExecuteReader(string commandText)
         {
-            var sqlCommand = new NpgsqlCommand(command, _connector.GetConnection());
-            sqlCommand.CommandType = CommandType.Text;
-            
-            switch (executionType)
-            {
-                case SQLCommandExecutionType.Reader:
-                    sqlCommand.ExecuteReader();
-                    break;
-                
-                case SQLCommandExecutionType.NonQuery:
-                    sqlCommand.ExecuteNonQuery();
-                    break;
-                
-                case SQLCommandExecutionType.Scalar:
-                    sqlCommand.ExecuteScalar();
-                    break;
-                
-                case SQLCommandExecutionType.NonQueryAsync:
-                    sqlCommand.ExecuteNonQueryAsync();
-                    break;
-                
-                case SQLCommandExecutionType.ReaderAsync:
-                    sqlCommand.ExecuteReaderAsync();
-                    break;
-                
-                case SQLCommandExecutionType.ScalarAsync:
-                    sqlCommand.ExecuteScalarAsync();
-                    break;
-            }
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return command.ExecuteReader();
+        }
+
+        public int ExecuteNonQuery(string commandText)
+        {
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return command.ExecuteNonQuery();
+        }
+
+        public object? ExecuteScalar(string commandText)
+        {
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return command.ExecuteScalar();
+        }
+        
+        public Task<NpgsqlDataReader> ExecuteReaderAsync(string commandText)
+        {
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return Task.FromResult(command.ExecuteReader());
+        }
+        
+        public Task<int> ExecuteNonQueryAsync(string commandText)
+        {
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return Task.FromResult(command.ExecuteNonQuery());
+        }
+
+        public Task<object?> ExecuteScalarAsync(string commandText)
+        {
+            var command = new NpgsqlCommand(commandText, _connector.GetConnection());
+            return Task.FromResult(command.ExecuteScalar());
         }
     }
 }
