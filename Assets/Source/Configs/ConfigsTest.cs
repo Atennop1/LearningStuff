@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using UnityEngine;
@@ -8,12 +9,12 @@ namespace LearningStuff.Configs
     {
         private void Awake()
         {
-            if (ConfigurationManager.GetSection("human") is not NameValueCollection humanConfigSection) 
+            if (ConfigurationManager.GetSection("human") is not NameValueCollection humanConfigSection)
                 return;
-            
+
             var firstName = humanConfigSection["FirstName"];
             var lastName = humanConfigSection["LastName"];
-            var age = int.Parse(humanConfigSection["Age"]);
+            var age = int.Parse(humanConfigSection["Age"] ?? throw new InvalidOperationException());
             
             Debug.Log($"First name: {firstName}\nLast name: {lastName}\nAge: {age}");
         }

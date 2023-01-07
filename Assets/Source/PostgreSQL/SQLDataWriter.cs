@@ -25,10 +25,10 @@ namespace LearningStuff.PostgreSQL
             var finalCommandStringBuilder = new StringBuilder();
             var sqlDataNames = sqlData.Select(data => data.Name).ToArray();
             
-            finalCommandStringBuilder.Append($"INSERT TO {databaseName} (");
+            finalCommandStringBuilder.Append($"INSERT INTO {databaseName} (");
             finalCommandStringBuilder.Append(BuildParameters(sqlDataNames, ""));
             
-            finalCommandStringBuilder.Append("VALUES (");
+            finalCommandStringBuilder.Append(" VALUES (");
             finalCommandStringBuilder.Append(BuildParameters(sqlDataNames, "@"));
 
             sqlCommand.CommandText = finalCommandStringBuilder.ToString();
@@ -36,6 +36,7 @@ namespace LearningStuff.PostgreSQL
             foreach (var data in sqlData)
                 sqlCommand.Parameters.AddWithValue(data.Name, data.Value);
 
+            Console.WriteLine(sqlCommand.CommandText);
             sqlCommand.ExecuteNonQuery();
         }
 

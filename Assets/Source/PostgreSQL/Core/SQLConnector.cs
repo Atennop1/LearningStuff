@@ -6,10 +6,9 @@ namespace LearningStuff.PostgreSQL.Core
 {
     public class SQLConnector
     {
-        public bool IsConnectionOpen => _sqlConnection.State == ConnectionState.Open;
-        
         private readonly string AuthorizationString;
         private NpgsqlConnection _sqlConnection;
+        private bool _isConnectionOpen => _sqlConnection.State == ConnectionState.Open;
 
         public SQLConnector(string authorizationString)
         {
@@ -20,7 +19,7 @@ namespace LearningStuff.PostgreSQL.Core
         {
             _sqlConnection = new NpgsqlConnection(AuthorizationString);
 
-            if (!IsConnectionOpen)
+            if (!_isConnectionOpen)
                 _sqlConnection.Open();
 
             return _sqlConnection;
