@@ -25,7 +25,7 @@ namespace LearningStuff.PostgreSQL.Core
             return command.ExecuteNonQuery();
         }
 
-        public object? ExecuteScalar(string commandText)
+        public object ExecuteScalar(string commandText)
         {
             var command = new NpgsqlCommand(commandText, _connector.GetConnection());
             return command.ExecuteScalar();
@@ -43,7 +43,7 @@ namespace LearningStuff.PostgreSQL.Core
             return Task.FromResult(command.ExecuteNonQuery());
         }
 
-        public Task<object?> ExecuteScalarAsync(string commandText)
+        public Task<object> ExecuteScalarAsync(string commandText)
         {
             var command = new NpgsqlCommand(commandText, _connector.GetConnection());
             return Task.FromResult(command.ExecuteScalar());

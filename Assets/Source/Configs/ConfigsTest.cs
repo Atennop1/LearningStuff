@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LearningStuff.Configs
 {
-    public class ConfigsTest : MonoBehaviour
+    public class ConfigsTest : MonoBehaviour //sadly but this method work only in default c# project, but not in unity :(
     {
         private void Awake()
         {

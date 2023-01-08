@@ -32,7 +32,7 @@ namespace LearningStuff.PostgreSQL
             _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
 
-        private string BuildParameters(string?[] names)
+        private string BuildParameters(string[] names)
         {
             var stringBuilder = new StringBuilder();
             
