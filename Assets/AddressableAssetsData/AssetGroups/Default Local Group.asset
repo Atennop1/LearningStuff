@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 51ffff4ac242f3243b003f97a6e176c6
+  m_SerializeEntries:
+  - m_GUID: f0fc3cd553d432141bea68771abfaead
+    m_Address: Assets/Source/Addressables/ColorsLoading/Colors/Green.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6e6077671e6233d49a32595649f5a90d
+    m_Address: Assets/Source/Addressables/ColorsLoading/Colors/Red.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9de7a26a6bfb48246bccf49fcf213009
+    m_Address: Assets/Source/Addressables/ColorsLoading/Colors/White.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 13519a883aa837b4bae436ec5009d62e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8c055a12ae0492c49863a55cbc28c6f9, type: 2}
+    - {fileID: 11400000, guid: 046772600fddb6948a165676cf8123c2, type: 2}

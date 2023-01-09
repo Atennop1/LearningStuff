@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
