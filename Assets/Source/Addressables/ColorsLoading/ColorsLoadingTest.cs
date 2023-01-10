@@ -22,9 +22,13 @@ namespace LearningStuff.Addressables
                 
                 _buttons[i].onClick.AddListener(async () =>
                 {
-                    var colorDataOperationHandler = await assetLoader.LoadAsset(_colorAssetReferences[index]);
-                    _camera.backgroundColor = ((ColorData)colorDataOperationHandler.Result).Color;
-                    assetReleaser.ReleaseAsset(colorDataOperationHandler, 1000);
+                    var asset = _colorAssetReferences[index];
+                    var colorDataOperationHandle = await assetLoader.LoadAsset<ColorData>(asset);
+                    
+                    if (colorDataOperationHandle.Result != null)
+                        _camera.backgroundColor = colorDataOperationHandle.Result.Color;
+                    
+                    assetReleaser.ReleaseAsset(asset, 1000);
                 });
             }
         }

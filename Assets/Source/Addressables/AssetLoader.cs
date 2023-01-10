@@ -8,18 +8,21 @@ namespace LearningStuff.Addressables
 {
     public class AssetLoader
     {
-        public async Task<AsyncOperationHandle> LoadAsset(AssetReference assetReference)
+        public async Task<AsyncOperationHandle<T>> LoadAsset<T>(AssetReference assetReference)
         {
             if (assetReference.IsValid())
-                return assetReference.OperationHandle;
+                return assetReference.OperationHandle.Convert<T>();
 
-            var asyncOperationHandler = assetReference.LoadAssetAsync<object>();
-            await asyncOperationHandler.Task;
+            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
+            await asyncOperationHandle.Task;
+            
+            if (!assetReference.IsValid())
+                throw new ArgumentException("Too many load requests");
 
-            if (asyncOperationHandler.Status != AsyncOperationStatus.Succeeded)
+            if (asyncOperationHandle.Status != AsyncOperationStatus.Succeeded)
                 throw new ArgumentException("Something went wrong while loading asset");
 
-            return asyncOperationHandler;
+            return asyncOperationHandle;
         }
     }
 }

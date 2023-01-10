@@ -1,22 +1,19 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
-using UnityEngine.ResourceManagement.AsyncOperations;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine.AddressableAssets;
+using UnityAddressables = UnityEngine.AddressableAssets.Addressables;
 
 namespace LearningStuff.Addressables
 {
     public class AssetReleaser
     {
-        public async void ReleaseAsset(AsyncOperationHandle asyncOperationHandle, int timeInMilliseconds)
+        public async void ReleaseAsset(AssetReference assetReference, int timeInMilliseconds)
         {
             try
             {
                 await UniTask.Delay(timeInMilliseconds);
-                UnityEngine.AddressableAssets.Addressables.Release(asyncOperationHandle);
+                UnityAddressables.Release(assetReference.OperationHandle);
             }
-            catch (Exception)
-            {
-                // ignored cause it means that asset is already released
-            }
+            catch { /*ignored cause it means that asset is already released*/ }
         }
     }
 }
