@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Square.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dca8e8c240b09ea4084cca3fb9d4ec8c
+    m_Address: Assets/Scenes/PostgreSQL.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13519a883aa837b4bae436ec5009d62e, type: 2}
   m_SchemaSet:
