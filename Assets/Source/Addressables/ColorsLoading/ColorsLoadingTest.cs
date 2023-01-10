@@ -25,9 +25,7 @@ namespace LearningStuff.Addressables
                     var asset = _colorAssetReferences[index];
                     var colorDataOperationHandle = await assetLoader.LoadAsset<ColorData>(asset);
                     
-                    if (colorDataOperationHandle.Result != null)
-                        _camera.backgroundColor = colorDataOperationHandle.Result.Color;
-                    
+                    _camera.backgroundColor = colorDataOperationHandle.Result.Color;
                     assetReleaser.ReleaseAsset(asset, 1000);
                 });
             }

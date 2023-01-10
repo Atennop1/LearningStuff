@@ -29,6 +29,14 @@ MonoBehaviour:
     m_Address: Assets/Source/Addressables/ColorsLoading/Colors/White.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 86e61379795b3c94b860a2edb801d0f8
+    m_Address: Assets/Anatoliy.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e9626dbcf3c0ff5489ca6b1cd3a5edf9
+    m_Address: Assets/Prefabs/Square.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 13519a883aa837b4bae436ec5009d62e, type: 2}
   m_SchemaSet:
