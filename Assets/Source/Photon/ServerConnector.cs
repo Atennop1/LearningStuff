@@ -4,6 +4,12 @@ namespace LearningStuff.Photon
 {
     public class ServerConnector
     {
-        public void ConnectToServer() => PhotonNetwork.ConnectUsingSettings();
+        public void ConnectToServer()
+        {
+            if (PhotonNetwork.IsConnected)
+                return;
+            
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 }
