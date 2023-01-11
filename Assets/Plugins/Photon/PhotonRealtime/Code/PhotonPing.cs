@@ -58,12 +58,12 @@ namespace Photon.Realtime
 
         public virtual bool StartPing(string ip)
         {
-           
+            throw new Exception();
         }
 
         public virtual bool Done()
         {
-           
+            throw new Exception();
         }
 
         public virtual void Dispose()
@@ -275,7 +275,7 @@ namespace Photon.Realtime
                 }
                 catch
                 {
-               
+                   
                 }
             }
         }
