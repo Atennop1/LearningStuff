@@ -21,7 +21,7 @@ namespace LearningStuff.Photon.Rooms
                     return;
                 
                 roomCreator.CreateRoom(_nameInputField.text, TypedLobby.Default, 2);
-                PhotonNetwork.JoinRoom(_nameInputField.text);
+                PhotonNetwork.LoadLevel("PhotonGame");
             });
         }
         

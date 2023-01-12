@@ -18,6 +18,9 @@ namespace LearningStuff.Photon.Rooms
 
             foreach (var roomInfo in roomInfos)
             {
+                if (roomInfo.PlayerCount == 0)
+                    continue;
+
                 var roomViewGameObject = Instantiate(_roomViewPrefab, _content);
                 var roomView = roomViewGameObject.GetComponent<RoomView>();
                 roomView.Display(roomInfo);
