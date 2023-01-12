@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine;
 
 namespace LearningStuff.Photon
 {
@@ -16,6 +17,7 @@ namespace LearningStuff.Photon
             };
                 
             PhotonNetwork.CreateRoom(name, roomOptions, lobby);
+            Debug.Log($"Room with name {name} created");
         }
     }
 }
