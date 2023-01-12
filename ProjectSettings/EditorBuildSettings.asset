@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Addressables.unity
-    guid: 548263ecfc18d124d8ff4f7fc20d73cc
+    path: Assets/Scenes/Photon/PhotonMenu.unity
+    guid: c02224626a024824fa62778f1e1af640
+  - enabled: 1
+    path: Assets/Scenes/Photon/PhotonGame.unity
+    guid: 677b6687da4a4014781ced6ed1039881
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f3df5da8bb8bfa943ac5b2fb3ebf03a4, type: 2}

@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
 
 namespace LearningStuff.Photon
 {
-    public class MultiplayerRoot : MonoBehaviour
+    public class MultiplayerRoot : MonoBehaviourPunCallbacks
     {
         private void Awake()
         {
