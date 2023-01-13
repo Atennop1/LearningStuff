@@ -18,7 +18,7 @@ namespace LearningStuff.Photon.Rooms
 
             foreach (var roomInfo in roomInfos)
             {
-                if (roomInfo.PlayerCount == 0)
+                if (roomInfo.PlayerCount == 0 || roomInfo.PlayerCount == roomInfo.MaxPlayers)
                     continue;
 
                 var roomViewGameObject = Instantiate(_roomViewPrefab, _content);
