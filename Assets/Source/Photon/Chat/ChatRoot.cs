@@ -6,11 +6,13 @@ namespace LearningStuff.Photon.Chat
     {
         [SerializeField] private MessageWriterView _messageWriterView;
         [SerializeField] private ChatView _chatView;
+        [SerializeField] private MessageWriter _messageWriter;
 
         private void Awake()
         {
-            var chat = new Chat(_chatView, 10);
-            _messageWriterView.Init(new MessageWriter(chat));
+            var chat = new Chat(_chatView, 5);
+            _messageWriter.Init(chat);
+            _messageWriterView.Init(_messageWriter);
         }
     }
 }

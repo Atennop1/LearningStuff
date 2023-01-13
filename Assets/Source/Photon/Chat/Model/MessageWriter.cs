@@ -1,16 +1,27 @@
 ﻿using System;
+using Photon.Pun;
+using UnityEngine;
 
 namespace LearningStuff.Photon.Chat
 {
-    public class MessageWriter
+    public class MessageWriter : MonoBehaviour
     {
-        private readonly Chat _chat;
+        [SerializeField] private PhotonView _photonView;
+        private Chat _chat;
 
-        public MessageWriter(Chat chat)
+        public void Init(Chat chat)
         {
             _chat = chat ?? throw new ArgumentException("Chat can't be null");
         }
 
-        public void WriteMessage(Message message) => _chat.AddMessage(message);
+        public void WriteMessage(Message message)
+        {
+            _photonView.RPC("SendMessageToOtherPeople", RpcTarget.All,
+                message.Nickname, message.Text);
+        }
+        
+        [PunRPC]
+        private void SendMessageToOtherPeople(string nickName, string text) 
+            => _chat.AddMessage(new Message(nickName, text));
     }
 }

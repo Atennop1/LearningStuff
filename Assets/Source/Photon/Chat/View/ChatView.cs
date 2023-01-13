@@ -15,8 +15,8 @@ namespace LearningStuff.Photon.Chat
             foreach (var message in messages)
             {
                 var messageGameObject = Instantiate(_messagePrefab, _content);
-                var messageVIew = messageGameObject.GetComponent<MessageView>();
-                messageVIew.Display(message);
+                var messageView = messageGameObject.GetComponent<MessageView>();
+                messageView.Display(message);
             }
         }
 
