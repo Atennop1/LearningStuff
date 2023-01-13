@@ -10,6 +10,7 @@ namespace LearningStuff.Photon.Chat
     {
         [SerializeField] private TMP_InputField _messageField;
         [SerializeField] private Button _sendMessageButton;
+        [SerializeField] private PhotonView _photonView;
 
         private MessageWriter _messageWriter;
 
@@ -25,8 +26,13 @@ namespace LearningStuff.Photon.Chat
                 if (_messageField.text == string.Empty)
                     return;
                 
-                _messageWriter.WriteMessage(new Message(PhotonNetwork.NickName, _messageField.text));
+                _photonView.RPC("SendMessageToOtherPeople", RpcTarget.AllBuffered,
+                    PhotonNetwork.NickName, _messageField.text);
             });
         }
+
+        [PunRPC]
+        private void SendMessageToOtherPeople(string nickName, string text) 
+            => _messageWriter.WriteMessage(new Message(nickName, text));
     }
 }

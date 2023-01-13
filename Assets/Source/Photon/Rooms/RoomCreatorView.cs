@@ -20,7 +20,7 @@ namespace LearningStuff.Photon.Rooms
                 if (_nameInputField.text == string.Empty)
                     return;
                 
-                roomCreator.CreateRoom(_nameInputField.text, TypedLobby.Default, 2);
+                roomCreator.CreateRoom(_nameInputField.text, TypedLobby.Default, 1);
                 PhotonNetwork.LoadLevel("PhotonGame");
             });
         }

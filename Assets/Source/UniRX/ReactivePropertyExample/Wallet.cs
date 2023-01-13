@@ -3,7 +3,7 @@ using UniRx;
 
 namespace LearningStuff.UniRX.ReactivePropertyExample
 {
-    public class Wallet : IWallet
+    public class Wallet
     {
         public IntReactiveProperty MoneyCount { get; } = new();
         
@@ -26,6 +26,6 @@ namespace LearningStuff.UniRX.ReactivePropertyExample
             MoneyCount.Value -= money;
         }
 
-        public bool CanTake(int money) => money <= MoneyCount.Value;
+        private bool CanTake(int money) => money <= MoneyCount.Value;
     }
 }
