@@ -10,7 +10,7 @@ namespace LearningStuff.Photon.Chat
 
         private void Awake()
         {
-            var chat = new Chat(_chatView, 5);
+            var chat = new Chat(_chatView, 9);
             _messageWriter.Init(chat);
             _messageWriterView.Init(_messageWriter);
         }

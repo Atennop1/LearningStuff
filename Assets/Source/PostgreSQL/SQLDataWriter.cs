@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using LearningStuff.PostgreSQL.Core;
 using Npgsql;
+using UnityEngine;
 
 namespace LearningStuff.PostgreSQL
 {
@@ -25,10 +26,13 @@ namespace LearningStuff.PostgreSQL
 
             finalCommandStringBuilder.Append($"INSERT INTO {databaseName} (");
             finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Name).ToArray()));
+            finalCommandStringBuilder.Append(")");
             
             finalCommandStringBuilder.Append(" VALUES (");
             finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Value.ToString()).ToArray()));
+            finalCommandStringBuilder.Append(")");
             
+            Debug.Log(finalCommandStringBuilder.ToString());
             _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
 
@@ -39,7 +43,7 @@ namespace LearningStuff.PostgreSQL
             foreach (var name in names)
             {
                 stringBuilder.Append(name);
-                stringBuilder.Append(name != names[^1] ? ", " : ")");
+                stringBuilder.Append(name != names[^1] ? ", " : string.Empty);
             }
 
             return stringBuilder.ToString();
