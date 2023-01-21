@@ -5,6 +5,7 @@ namespace LearningStuff.Photon.Callbacks
 {
     public class LeaveMenuCallback : MonoBehaviourPunCallbacks
     {
-        public override void OnJoinedRoom() => SceneManager.LoadSceneAsync("PhotonGame");
+        public override void OnJoinedRoom() 
+            => SceneManager.LoadSceneAsync("PhotonGame");
     }
 }

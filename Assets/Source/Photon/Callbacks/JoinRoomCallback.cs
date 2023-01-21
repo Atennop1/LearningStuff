@@ -10,16 +10,10 @@ namespace LearningStuff.Photon.Callbacks
        [SerializeField] private MessageWriter _messageWriter;
        
        public override void OnPlayerEnteredRoom(Player newPlayer)
-       {
-           Debug.Log("Other joined the room");
-           WriteMessage($"{newPlayer.NickName} has joined the room");
-       }
+           => WriteMessage($"{newPlayer.NickName} has joined the room");
 
-       public override void OnJoinedRoom()
-       {
-           Debug.Log("You joined the room");
-           WriteMessage($"{PhotonNetwork.NickName} has joined the room");
-       }
+       public override void OnJoinedRoom() 
+           => WriteMessage($"{PhotonNetwork.NickName} has joined the room");
 
        private void WriteMessage(string message)
            => _messageWriter.WriteMessage(new Message("SYSTEM", message));

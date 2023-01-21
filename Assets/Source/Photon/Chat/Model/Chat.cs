@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Photon.Pun;
+using UnityEngine;
+using Logger = LearningStuff.Logging.Logger;
 
 namespace LearningStuff.Photon.Chat
 {
@@ -7,7 +10,9 @@ namespace LearningStuff.Photon.Chat
     {
         private readonly List<Message> _messages = new();
         private readonly ChatView _view;
+        
         private readonly int _bufferSize;
+        private readonly Logger _logger = new();
 
         public Chat(ChatView view, int bufferSize)
         {
@@ -24,6 +29,9 @@ namespace LearningStuff.Photon.Chat
                 _messages.RemoveAt(0);
             
             _messages.Add(message);
+            var logMessage = $"Player \"{message.Nickname}\" in room \"{PhotonNetwork.CurrentRoom.Name}\": {message.Text}";
+            
+            _logger.Log(logMessage, LogType.Log);
             _view.Display(_messages);
         }
     }
