@@ -6,7 +6,7 @@ using Logger = LearningStuff.Logging.Logger;
 
 namespace LearningStuff.Photon.Chat
 {
-    public class Chat //maybe i add logger in this place sometime...
+    public class Chat
     {
         private readonly List<Message> _messages = new();
         private readonly ChatView _view;
