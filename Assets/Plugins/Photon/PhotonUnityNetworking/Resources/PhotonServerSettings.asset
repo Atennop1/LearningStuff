@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - SendMessageToOtherPeople
+  - PlayNotificationSound
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

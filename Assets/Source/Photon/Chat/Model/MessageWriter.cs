@@ -7,6 +7,7 @@ namespace LearningStuff.Photon.Chat
     public class MessageWriter : MonoBehaviour
     {
         [SerializeField] private PhotonView _photonView;
+        [SerializeField] private MessageWriterView _messageWriterView;
         private Chat _chat;
 
         public void Init(Chat chat)
@@ -18,10 +19,16 @@ namespace LearningStuff.Photon.Chat
         {
             _photonView.RPC("SendMessageToOtherPeople", RpcTarget.All,
                 message.Nickname, message.Text);
+            
+            _photonView.RPC("PlayNotificationSound", RpcTarget.Others);
         }
-        
+
         [PunRPC]
-        private void SendMessageToOtherPeople(string nickName, string text) 
+        private void SendMessageToOtherPeople(string nickName, string text)
             => _chat.AddMessage(new Message(nickName, text));
+
+        [PunRPC]
+        private void PlayNotificationSound()
+            => _messageWriterView.PlayNotificationSound();
     }
 }
