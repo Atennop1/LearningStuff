@@ -8,9 +8,11 @@ namespace LearningStuff.Photon.Rooms
     {
         [SerializeField] private TextMeshProUGUI _playersText;
 
-        public void Display()
+        private void FixedUpdate()
         {
-            Debug.Log("Displayed");
+            if (!PhotonNetwork.IsConnected || PhotonNetwork.CurrentRoom == null)
+                return;
+            
             _playersText.text =
                 $"Players: {PhotonNetwork.CurrentRoom.PlayerCount}/{PhotonNetwork.CurrentRoom.MaxPlayers}";
         }

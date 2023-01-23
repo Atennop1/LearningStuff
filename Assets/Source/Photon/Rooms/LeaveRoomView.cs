@@ -7,8 +7,8 @@ namespace LearningStuff.Photon.Rooms
 {
     public class LeaveRoomView : MonoBehaviour
     {
-        [SerializeField] private MessageWriter _messageWriter;
         [SerializeField] private Button _leaveButton;
+        [SerializeField] private MessageWriter _messageWriter;
 
         private void Awake()
         {
