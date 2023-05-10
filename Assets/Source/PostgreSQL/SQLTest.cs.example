@@ -8,7 +8,7 @@ namespace LearningStuff.PostgreSQL
         private void Awake()
         {
             var sqlConnector = new SQLConnector(@"Server=your server;Port=your port;User Id=your user id;Password=your password;Database=your DB name");
-            var sqlCommandExecutor = new SQLCommandsExecutor(sqlConnector); //object for executing any commands, base for other functrional classes
+            var sqlCommandExecutor = new SQLCommandsExecutor(sqlConnector); //object for executing any commands, base for other functional classes
             var sqlParametersStringBuilder = new SQLParametersStringBuilder(); //object for build parameters string for sql requests
                                     
             var sqlDataReader = new SQLDataReader(sqlCommandExecutor); //use reader for reading data from DB using sql requests
