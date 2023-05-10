@@ -29,10 +29,9 @@ namespace LearningStuff.PostgreSQL
             finalCommandStringBuilder.Append(")");
             
             finalCommandStringBuilder.Append(" VALUES (");
-            finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Value.ToString()).ToArray()));
+            finalCommandStringBuilder.Append(BuildParameters(sqlData.Select(data => data.Value is int or float ? data.Value.ToString() : $"'{data.Value}'").ToArray()));
             finalCommandStringBuilder.Append(")");
             
-            Debug.Log(finalCommandStringBuilder.ToString());
             _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
 
