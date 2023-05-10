@@ -3,5 +3,21 @@
   <component name="Statistic">
     <option name="fileTypes" value="" />
     <option name="fileTypesIncluded" value="cs" />
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/.git" />
+        <option value="$PROJECT_DIR$/.idea" />
+        <option value="$PROJECT_DIR$/.vs" />
+        <option value="$PROJECT_DIR$/Library" />
+        <option value="$PROJECT_DIR$/Logs" />
+        <option value="$PROJECT_DIR$/obj" />
+        <option value="$PROJECT_DIR$/Packages" />
+        <option value="$PROJECT_DIR$/ProjectSettings" />
+        <option value="$PROJECT_DIR$/Temp" />
+        <option value="$PROJECT_DIR$/UserSettings" />
+        <option value="$PROJECT_DIR$/Assets/AddressableAssetsData" />
+        <option value="$PROJECT_DIR$/Assets/Plugins" />
+      </list>
+    </option>
   </component>
 </project>
