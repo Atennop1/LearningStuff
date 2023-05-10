@@ -8,10 +8,8 @@ namespace LearningStuff.PostgreSQL.Core
     {
         private readonly SQLConnector _connector;
 
-        public SQLCommandsExecutor(SQLConnector connector)
-        {
-            _connector = connector ?? throw new ArgumentException("Connector can't be null");
-        }
+        public SQLCommandsExecutor(SQLConnector connector) 
+            => _connector = connector ?? throw new ArgumentException("Connector can't be null");
 
         public NpgsqlDataReader ExecuteReader(string commandText)
         {
