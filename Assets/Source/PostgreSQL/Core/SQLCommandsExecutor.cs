@@ -4,7 +4,7 @@ using Npgsql;
 
 namespace LearningStuff.PostgreSQL.Core
 {
-    public class SQLCommandsExecutor
+    public sealed class SQLCommandsExecutor
     {
         private readonly SQLConnector _connector;
 

@@ -28,7 +28,7 @@ namespace LearningStuff.PostgreSQL.Components
                 throw new ArgumentNullException(nameof(argumentsForWhichChanging));
             
             var finalCommandStringBuilder = new StringBuilder();
-            finalCommandStringBuilder.Append($"UPDATE {databaseName} SET");
+            finalCommandStringBuilder.Append($"UPDATE {databaseName} SET ");
             finalCommandStringBuilder.Append(_sqlParametersStringBuilder.BuildParameters(argumentsThatChanging.Select(data => $"{data.Name} = {data.Value}").ToArray(), " AND "));
 
             if (argumentsThatChanging.Length != 0)

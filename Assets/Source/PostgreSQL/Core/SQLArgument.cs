@@ -12,11 +12,11 @@ namespace LearningStuff.PostgreSQL.Core
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
             
-            Name = name ?? throw new ArgumentException("Name can't be null");
-            Value = value is int or float ? value.ToString() : value;
-
-            if (Value is string valueString && (string.IsNullOrEmpty(valueString) || valueString.IndexOfAny("&^\"\'@#$&|".ToCharArray()) != -1))
+            if (value is string valueString && (string.IsNullOrEmpty(valueString) || valueString.IndexOfAny("&^\"\'@#$&|".ToCharArray()) != -1))
                 throw new ArgumentException("Value contains forbidden symbols");
+            
+            Name = name ?? throw new ArgumentException("Name can't be null");
+            Value = value is string ? $"'{value}'" : value;
         }
     }
 }

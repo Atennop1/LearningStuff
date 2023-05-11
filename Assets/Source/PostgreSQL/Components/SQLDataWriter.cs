@@ -5,7 +5,7 @@ using LearningStuff.PostgreSQL.Core;
 
 namespace LearningStuff.PostgreSQL.Components
 {
-    public class SQLDataWriter
+    public sealed class SQLDataWriter
     {
         private readonly SQLCommandsExecutor _sqlCommandsExecutor;
         private readonly SQLParametersStringBuilder _sqlParametersStringBuilder;
