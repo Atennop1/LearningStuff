@@ -18,9 +18,17 @@ namespace LearningStuff.PostgreSQL.Components
 
         public void UpdateData(string databaseName, SQLArgument[] argumentsThatChanging, SQLArgument[] argumentsForWhichChanging)
         {
+            if (databaseName == null)
+                throw new ArgumentNullException(nameof(databaseName));
+
+            if (argumentsThatChanging == null || argumentsThatChanging.Length == 0)
+                throw new ArgumentNullException(nameof(argumentsThatChanging));
+            
+            if (argumentsForWhichChanging == null || argumentsForWhichChanging.Length == 0)
+                throw new ArgumentNullException(nameof(argumentsForWhichChanging));
+            
             var finalCommandStringBuilder = new StringBuilder();
             finalCommandStringBuilder.Append($"UPDATE {databaseName} SET");
-            
             finalCommandStringBuilder.Append(_sqlParametersStringBuilder.BuildParameters(argumentsThatChanging.Select(data => $"{data.Name} = {data.Value}").ToArray(), " AND "));
 
             if (argumentsThatChanging.Length != 0)

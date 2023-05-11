@@ -13,6 +13,9 @@ namespace LearningStuff.PostgreSQL.Components
 
         public DataTable GetData(string sqlRequest)
         {
+            if (sqlRequest == null)
+                throw new ArgumentNullException(nameof(sqlRequest));
+            
             var dataReader = _sqlCommandsExecutor.ExecuteReader(sqlRequest);
             var dataTable = new DataTable();
             

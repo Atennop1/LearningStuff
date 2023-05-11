@@ -6,20 +6,17 @@ namespace LearningStuff.PostgreSQL.Core
 {
     public class SQLConnector
     {
-        private readonly string AuthorizationString;
+        private readonly string _authorizationString;
         private NpgsqlConnection _sqlConnection;
-        private bool _isConnectionOpen => _sqlConnection.State == ConnectionState.Open;
 
-        public SQLConnector(string authorizationString)
-        {
-            AuthorizationString = authorizationString ?? throw new ArgumentException("AuthorizationString can't be null");
-        }
+        public SQLConnector(string authorizationString) 
+            => _authorizationString = authorizationString ?? throw new ArgumentException("AuthorizationString can't be null");
 
         public NpgsqlConnection GetConnection()
         {
-            _sqlConnection = new NpgsqlConnection(AuthorizationString);
+            _sqlConnection = new NpgsqlConnection(_authorizationString);
 
-            if (!_isConnectionOpen)
+            if (_sqlConnection.State != ConnectionState.Open)
                 _sqlConnection.Open();
 
             return _sqlConnection;
