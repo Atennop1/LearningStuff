@@ -2,15 +2,18 @@
 
 namespace LearningStuff.PostgreSQL.Core
 {
-    public struct SQLData
+    public struct SQLArgument
     {
-        public readonly string Name;
-        public readonly object Value;
+        public string Name { get; }
+        public object Value { get; }
 
-        public SQLData(string name, object value)
+        public SQLArgument(string name, object value)
         {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+            
             Name = name ?? throw new ArgumentException("Name can't be null");
-            Value = value ?? throw new ArgumentNullException(nameof(value));
+            Value = value is int or float ? value.ToString() : value;
 
             if (Value is string valueString && (string.IsNullOrEmpty(valueString) || valueString.IndexOfAny("&^\"\'@#$&|".ToCharArray()) != -1))
                 throw new ArgumentException("Value contains forbidden symbols");

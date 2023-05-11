@@ -16,18 +16,12 @@ namespace LearningStuff.PostgreSQL.Components
             _sqlCommandsExecutor = sqlCommandsExecutor ?? throw new ArgumentNullException(nameof(sqlCommandsExecutor));
         }
 
-        public void DeleteData(string databaseName, SQLData[] sqlData)
+        public void DeleteData(string databaseName, SQLArgument[] sqlData)
         {
             var finalCommandStringBuilder = new StringBuilder();
             finalCommandStringBuilder.Append($"DELETE FROM {databaseName} WHERE ");
 
-            finalCommandStringBuilder.Append(_sqlParametersStringBuilder
-                .BuildParameters(sqlData.Select(data =>
-                {
-                    var value = data.Value is int or float ? data.Value.ToString() : $"'{data.Value}'";
-                    return $"{data.Name} = {value}";
-                }).ToArray(), " AND "));
-
+            finalCommandStringBuilder.Append(_sqlParametersStringBuilder.BuildParameters(sqlData.Select(data => $"{data.Name} = {data.Value}").ToArray(), " AND "));
             _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
     }

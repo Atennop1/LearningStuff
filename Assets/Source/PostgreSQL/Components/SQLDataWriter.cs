@@ -16,7 +16,7 @@ namespace LearningStuff.PostgreSQL.Components
             _sqlCommandsExecutor = sqlCommandsExecutor ?? throw new ArgumentNullException(nameof(sqlCommandsExecutor));
         }
 
-        public void WriteData(string databaseName, SQLData[] sqlData)
+        public void WriteData(string databaseName, SQLArgument[] sqlData)
         {
             var finalCommandStringBuilder = new StringBuilder();
 
@@ -25,10 +25,9 @@ namespace LearningStuff.PostgreSQL.Components
             finalCommandStringBuilder.Append(")");
             
             finalCommandStringBuilder.Append(" VALUES (");
-            finalCommandStringBuilder.Append(_sqlParametersStringBuilder
-                .BuildParameters(sqlData.Select(data => data.Value is int or float ? data.Value.ToString() : $"'{data.Value}'").ToArray(), ", "));
-            
+            finalCommandStringBuilder.Append(_sqlParametersStringBuilder.BuildParameters(sqlData.Select(data => data.Value.ToString()).ToArray(), ", "));
             finalCommandStringBuilder.Append(")");
+            
             _sqlCommandsExecutor.ExecuteNonQuery(finalCommandStringBuilder.ToString());
         }
     }
