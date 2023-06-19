@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.atennopgames.relationaldatabasesviaoop": {
+      "version": "https://github.com/Atennop1/Relational-Databases-via-OOP.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9a26a14b90e5227eb3639a9115c49428ed80fb9b"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.5",
       "depth": 1,

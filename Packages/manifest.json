@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.atennopgames.relationaldatabasesviaoop": "https://github.com/Atennop1/Relational-Databases-via-OOP.git",
     "com.unity.addressables": "1.19.19",
     "com.unity.collab-proxy": "1.15.17",
     "com.unity.feature.2d": "1.0.0",
