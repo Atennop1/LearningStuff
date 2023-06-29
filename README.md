@@ -20,7 +20,7 @@ I will not release this project anywhere, it's just something like my testing po
  - Attributes
  - Logging
  - Multithreading
- - PostgreSQL
+ - ~~PostgreSQL~~ (Moved to [my library](https://github.com/Atennop1/Relational-Databases-via-OOP))
 
 ## Conclusion
 
