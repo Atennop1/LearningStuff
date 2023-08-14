@@ -11,16 +11,15 @@ I will not release this project anywhere, it's just something like my testing po
 
 ### Techniques and Tools
  - ~~Zenject~~ VContainer
+ - ~~PostgreSQL~~ (Moved to [**my databases library**](https://github.com/Atennop1/Relational-Databases-via-OOP))
  - UniRX
  - Addressables
  - Config-files
- - TMP
  - Photon PUN2
  - UniTask
  - Attributes
  - Logging
  - Multithreading
- - ~~PostgreSQL~~ (Moved to [my library](https://github.com/Atennop1/Relational-Databases-via-OOP))
 
 ## Conclusion
 
