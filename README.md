@@ -5,23 +5,19 @@
 
 ## About project
 
-This repository contains my practice in new things while learning Unity. When I learn something new, I first read the documentation, then watch the video tutorials, and finally practice here.
+This repository contains my practice in new things while learning Unity.
+<br>When I'm learning something new that's not big enough for a standalone project, I first read the documentation, then watch the video tutorials, and finally practice here.
 
-I will not release this project anywhere, it's just something like my testing polygon for learning something new.
+This project has helped me understand many things that used to seem like a dark forest to me ;p
 
 ### Techniques and Tools
  - ~~Zenject~~ VContainer
+ - ~~PostgreSQL~~ (Moved to [**my databases library**](https://github.com/Atennop1/Relational-Databases-via-OOP))
  - UniRX
  - Addressables
  - Config-files
- - TMP
  - Photon PUN2
  - UniTask
  - Attributes
  - Logging
  - Multithreading
- - ~~PostgreSQL~~ (Moved to [my library](https://github.com/Atennop1/Relational-Databases-via-OOP))
-
-## Conclusion
-
-This project has helped me understand many things that used to seem like a dark forest to me ;p
